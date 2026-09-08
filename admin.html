@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quản trị lớp 7A5</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 430px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 32px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+}
+
+h1 {
+    text-align: center;
+    color: #1e40af;
+    margin-top: 0;
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin-top: 7px;
+    margin-bottom: 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+#message {
+    text-align: center;
+    margin-top: 18px;
+    color: #dc2626;
+}
+
+#adminPanel {
+    display: none;
+}
+
+.admin-item {
+    padding: 16px;
+    margin: 12px 0;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.logout {
+    margin-top: 25px;
+    background: #dc2626;
+}
+
+.logout:hover {
+    background: #b91c1c;
+}
+
+.user-info {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+    <!-- MÀN HÌNH ĐĂNG NHẬP -->
+
+    <div id="loginPanel">
+
+        <h1>🔐 Quản trị lớp 7A5</h1>
+
+        <p class="subtitle">
+            Dành cho giáo viên chủ nhiệm
+        </p>
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Nhập email quản trị"
+        >
+
+        <label>Mật khẩu</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Nhập mật khẩu"
+        >
+
+        <button id="loginButton">
+            Đăng nhập
+        </button>
+
+        <div id="message"></div>
+
+    </div>
+
+
+    <!-- MÀN HÌNH QUẢN TRỊ -->
+
+    <div id="adminPanel">
+
+        <h1>⚙️ Quản trị 7A5</h1>
+
+        <div class="user-info">
+            Đã đăng nhập:
+            <strong id="userEmail"></strong>
+        </div>
+
+        <div class="admin-item">
+            📢 Quản lý thông báo
+        </div>
+
+        <div class="admin-item">
+            📅 Quản lý lịch tuần
+        </div>
+
+        <div class="admin-item">
+            📷 Quản lý hình ảnh
+        </div>
+
+        <div class="admin-item">
+            🏆 Quản lý thành tích
+        </div>
+
+        <div class="admin-item">
+            📚 Quản lý tài liệu
+        </div>
+
+        <button
+            id="logoutButton"
+            class="logout"
+        >
+            Đăng xuất
+        </button>
+
+    </div>
+
+</div>
+</div>
+
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyDlGTat3NPbWnvbODzYB9uyQebpxXb_vXM",
+
+    authDomain: "site7a5.firebaseapp.com",
+
+    projectId: "site7a5",
+
+    storageBucket: "site7a5.firebasestorage.app",
+
+    messagingSenderId: "498959350083",
+
+    appId: "1:498959350083:web:af4e7b22bbeecae5c7d7f6",
+
+    measurementId: "G-4JXT13SKHZ"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+const loginPanel =
+    document.getElementById("loginPanel");
+
+const adminPanel =
+    document.getElementById("adminPanel");
+
+const message =
+    document.getElementById("message");
+
+
+document
+.getElementById("loginButton")
+.addEventListener("click", async () => {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    message.textContent = "";
+
+    if (!email || !password) {
+
+        message.textContent =
+            "Vui lòng nhập email và mật khẩu.";
+
+        return;
+    }
+
+    try {
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "Email hoặc mật khẩu không đúng.";
+
+    }
+
+});
+
+
+document
+.getElementById("logoutButton")
+.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+});
+
+
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+        loginPanel.style.display = "none";
+
+        adminPanel.style.display = "block";
+
+        document.getElementById("userEmail")
+            .textContent = user.email;
+
+    }
+
+    else {
+
+        loginPanel.style.display = "block";
+
+        adminPanel.style.display = "none";
+
+        document.getElementById("password").value = "";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
