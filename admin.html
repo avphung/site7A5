@@ -1,810 +1,768 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Quản trị lớp 7A5</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f1f5f9;
+    color:#1f2937;
 }
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f1f5f9;
-    color: #1f2937;
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px;
 }
-
-.container {
-    width: 100%;
-    max-width: 850px;
-    margin: 50px auto;
-    padding: 20px;
+.card{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:25px;
 }
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+h1,h2{color:#1e40af}
+input,textarea,select{
+    width:100%;
+    padding:11px;
+    margin:6px 0 14px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:15px;
 }
-
-h1 {
-    text-align: center;
-    color: #1e40af;
+textarea{min-height:100px}
+button{
+    padding:11px 16px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
 }
-
-.subtitle {
-    text-align: center;
-    color: #64748b;
-    margin-bottom: 30px;
+button:hover{background:#1d4ed8}
+.delete{background:#dc2626}
+.delete:hover{background:#b91c1c}
+.logout{background:#dc2626;width:100%;margin-top:20px}
+#adminPanel{display:none}
+#loginPanel{
+    max-width:420px;
+    margin:60px auto;
 }
-
-/* INPUT */
-
-label {
-    font-weight: bold;
+.section{
+    border-top:1px solid #e2e8f0;
+    padding-top:20px;
+    margin-top:20px;
 }
-
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 7px;
-    margin-bottom: 18px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 16px;
+.item{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    padding:15px;
+    border-radius:10px;
+    margin:10px 0;
 }
-
-textarea {
-    min-height: 130px;
-    resize: vertical;
+.actions{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
 }
-
-/* BUTTON */
-
-button {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+.actions button{flex:1}
+.small{
+    color:#64748b;
+    font-size:14px;
 }
-
-button:hover {
-    background: #1d4ed8;
+.nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
 }
-
-.logout {
-    background: #dc2626;
-    margin-top: 25px;
+.nav a{
+    text-decoration:none;
+    background:#e0e7ff;
+    color:#1e40af;
+    padding:9px 12px;
+    border-radius:8px;
+    font-weight:bold;
 }
-
-.logout:hover {
-    background: #b91c1c;
+.success{color:#16a34a}
+.error{color:#dc2626}
+img.preview{
+    width:160px;
+    max-height:120px;
+    object-fit:cover;
+    border-radius:8px;
 }
-
-/* LOGIN */
-
-#loginPanel {
-    max-width: 430px;
-    margin: auto;
+@media(max-width:700px){
+    .container{padding:12px}
+    .actions{flex-direction:column}
 }
-
-#message {
-    text-align: center;
-    margin-top: 15px;
-    color: #dc2626;
-}
-
-/* ADMIN */
-
-#adminPanel {
-    display: none;
-}
-
-.user-info {
-    text-align: center;
-    color: #64748b;
-    margin-bottom: 25px;
-}
-
-.admin-section {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 22px;
-    margin-top: 20px;
-    border-radius: 12px;
-}
-
-.admin-section h2 {
-    margin-top: 0;
-    color: #1e40af;
-}
-
-#noticeMessage {
-    text-align: center;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.menu {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.menu-item {
-    background: white;
-    border: 1px solid #e2e8f0;
-    padding: 18px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.back-home {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #2563eb;
-    text-decoration: none;
-}
-
-@media(max-width:600px) {
-
-    .container {
-        margin: 15px auto;
-    }
-
-    .card {
-        padding: 20px;
-    }
-
-}
-
 </style>
 </head>
-
 
 <body>
 
 <div class="container">
 
-<div class="card">
+<div id="loginPanel" class="card">
+    <h1>🔐 Quản trị lớp 7A5</h1>
 
+    <label>Email</label>
+    <input id="email" type="email">
 
-<!-- =================================
-     ĐĂNG NHẬP
-================================== -->
+    <label>Mật khẩu</label>
+    <input id="password" type="password">
 
-<div id="loginPanel">
+    <button id="loginButton" style="width:100%">
+        Đăng nhập
+    </button>
 
-<h1>🔐 Quản trị lớp 7A5</h1>
+    <p id="loginMessage"></p>
 
-<p class="subtitle">
-Dành cho giáo viên chủ nhiệm
-</p>
-
-
-<label>Email</label>
-
-<input
-type="email"
-id="email"
-placeholder="Nhập email quản trị"
->
-
-
-<label>Mật khẩu</label>
-
-<input
-type="password"
-id="password"
-placeholder="Nhập mật khẩu"
->
-
-
-<button id="loginButton">
-Đăng nhập
-</button>
-
-
-<div id="message"></div>
-
-
-<a
-href="index.html"
-class="back-home">
-← Về trang lớp 7A5
-</a>
-
+    <p style="text-align:center">
+        <a href="index.html">← Về trang chủ</a>
+    </p>
 </div>
 
-
-
-<!-- =================================
-     ADMIN PANEL
-================================== -->
 
 <div id="adminPanel">
 
+    <div class="card">
+        <h1>⚙️ QUẢN TRỊ LỚP 7A5</h1>
 
-<h1>⚙️ QUẢN TRỊ LỚP 7A5</h1>
+        <p>
+            Đăng nhập:
+            <strong id="userEmail"></strong>
+        </p>
+
+        <div class="nav">
+            <a href="#notices">📢 Thông báo</a>
+            <a href="#schedule">📅 Lịch tuần</a>
+            <a href="#gallery">📷 Hình ảnh</a>
+            <a href="#achievements">🏆 Thành tích</a>
+            <a href="#documents">📚 Tài liệu</a>
+        </div>
+
+        <a href="index.html">← Xem trang chủ</a>
+    </div>
 
 
-<div class="user-info">
+    <!-- THÔNG BÁO -->
+    <div class="card" id="notices">
+        <h2>📢 Quản lý thông báo</h2>
 
-Đang đăng nhập:
+        <input id="noticeTitle" placeholder="Tiêu đề">
+        <input id="noticeDate" type="date">
+        <textarea id="noticeContent" placeholder="Nội dung"></textarea>
 
-<strong id="userEmail"></strong>
+        <button id="addNotice">Đăng thông báo</button>
+
+        <p id="noticeMsg"></p>
+
+        <div id="noticeList"></div>
+    </div>
+
+
+    <!-- LỊCH TUẦN -->
+    <div class="card" id="schedule">
+        <h2>📅 Quản lý lịch tuần</h2>
+
+        <select id="scheduleDay">
+            <option value="">-- Chọn ngày --</option>
+            <option>Thứ Hai</option>
+            <option>Thứ Ba</option>
+            <option>Thứ Tư</option>
+            <option>Thứ Năm</option>
+            <option>Thứ Sáu</option>
+            <option>Thứ Bảy</option>
+            <option>Chủ Nhật</option>
+        </select>
+
+        <textarea id="scheduleContent"
+        placeholder="Nội dung công việc"></textarea>
+
+        <button id="addSchedule">Thêm lịch</button>
+
+        <p id="scheduleMsg"></p>
+
+        <div id="scheduleList"></div>
+    </div>
+
+
+    <!-- HÌNH ẢNH -->
+    <div class="card" id="gallery">
+        <h2>📷 Quản lý hình ảnh</h2>
+
+        <input id="imageTitle"
+        placeholder="Tên hoạt động">
+
+        <input id="imageUrl"
+        placeholder="URL hình ảnh">
+
+        <textarea id="imageDescription"
+        placeholder="Mô tả ảnh"></textarea>
+
+        <button id="addImage">Thêm hình ảnh</button>
+
+        <p class="small">
+            Bản này dùng URL ảnh. Sau khi chạy ổn,
+            ta sẽ nâng cấp thành nút Upload ảnh trực tiếp.
+        </p>
+
+        <p id="imageMsg"></p>
+
+        <div id="imageList"></div>
+    </div>
+
+
+    <!-- THÀNH TÍCH -->
+    <div class="card" id="achievements">
+        <h2>🏆 Quản lý thành tích</h2>
+
+        <input id="achievementTitle"
+        placeholder="Tên thành tích">
+
+        <input id="achievementDate"
+        type="date">
+
+        <textarea id="achievementContent"
+        placeholder="Mô tả thành tích"></textarea>
+
+        <button id="addAchievement">
+            Thêm thành tích
+        </button>
+
+        <p id="achievementMsg"></p>
+
+        <div id="achievementList"></div>
+    </div>
+
+
+    <!-- TÀI LIỆU -->
+    <div class="card" id="documents">
+        <h2>📚 Quản lý tài liệu</h2>
+
+        <input id="documentTitle"
+        placeholder="Tên tài liệu">
+
+        <input id="documentUrl"
+        placeholder="Link Google Drive, PDF, Forms...">
+
+        <textarea id="documentDescription"
+        placeholder="Mô tả"></textarea>
+
+        <button id="addDocument">
+            Thêm tài liệu
+        </button>
+
+        <p id="documentMsg"></p>
+
+        <div id="documentList"></div>
+    </div>
+
+
+    <div class="card">
+        <button id="logoutButton" class="logout">
+            Đăng xuất
+        </button>
+    </div>
 
 </div>
 
-
-
-<!-- =================================
-     ĐĂNG THÔNG BÁO
-================================== -->
-
-<div class="admin-section">
-
-
-<h2>
-📢 Đăng thông báo
-</h2>
-
-
-<label>
-Tiêu đề
-</label>
-
-<input
-type="text"
-id="noticeTitle"
-placeholder="Ví dụ: Họp phụ huynh đầu năm"
->
-
-
-<label>
-Ngày thông báo
-</label>
-
-<input
-type="date"
-id="noticeDate"
->
-
-
-<label>
-Nội dung
-</label>
-
-<textarea
-id="noticeContent"
-placeholder="Nhập nội dung thông báo..."
-></textarea>
-
-
-<button id="addNoticeButton">
-📢 Đăng thông báo
-</button>
-
-
-<div id="noticeMessage"></div>
-
-
 </div>
 
-
-
-<!-- =================================
-     CÁC CHỨC NĂNG KHÁC
-================================== -->
-
-<div class="menu">
-
-
-<div class="menu-item">
-📅
-<br><br>
-<strong>Lịch tuần</strong>
-</div>
-
-
-<div class="menu-item">
-📷
-<br><br>
-<strong>Hình ảnh</strong>
-</div>
-
-
-<div class="menu-item">
-🏆
-<br><br>
-<strong>Thành tích</strong>
-</div>
-
-
-<div class="menu-item">
-📚
-<br><br>
-<strong>Tài liệu</strong>
-</div>
-
-
-</div>
-
-
-<a
-href="index.html"
-class="back-home">
-← Xem trang lớp 7A5
-</a>
-
-
-<button
-id="logoutButton"
-class="logout">
-Đăng xuất
-</button>
-
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- =================================
-     FIREBASE
-================================== -->
 
 <script type="module">
 
-
-/* FIREBASE APP */
-
-import {
-initializeApp
-}
+import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-
-/* FIREBASE AUTHENTICATION */
-
 import {
-
-getAuth,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
-
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-
-/* FIRESTORE */
-
 import {
-
-getFirestore,
-collection,
-addDoc,
-serverTimestamp
-
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    deleteDoc,
+    doc,
+    query,
+    orderBy,
+    serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
-
-/* =================================
-   FIREBASE CONFIG
-================================== */
-
-
 const firebaseConfig = {
-
-apiKey:
-"AIzaSyDlGTat3NPbWnvbODzYB9uyQebpxXb_vXM",
-
-authDomain:
-"site7a5.firebaseapp.com",
-
-projectId:
-"site7a5",
-
-storageBucket:
-"site7a5.firebasestorage.app",
-
-messagingSenderId:
-"498959350083",
-
-appId:
-"1:498959350083:web:af4e7b22bbeecae5c7d7f6",
-
-measurementId:
-"G-4JXT13SKHZ"
-
+    apiKey: "AIzaSyDlGTat3NPbWnvbODzYB9uyQebpxXb_vXM",
+    authDomain: "site7a5.firebaseapp.com",
+    projectId: "site7a5",
+    storageBucket: "site7a5.firebasestorage.app",
+    messagingSenderId: "498959350083",
+    appId: "1:498959350083:web:af4e7b22bbeecae5c7d7f6",
+    measurementId: "G-4JXT13SKHZ"
 };
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 
-/* =================================
-   KHỞI TẠO FIREBASE
-================================== */
-
-
-const app =
-initializeApp(firebaseConfig);
-
-
-const auth =
-getAuth(app);
-
-
-const db =
-getFirestore(app);
-
-
-
-/* =================================
-   CÁC THÀNH PHẦN
-================================== */
-
+/* ======================
+   LOGIN
+====================== */
 
 const loginPanel =
 document.getElementById("loginPanel");
 
-
 const adminPanel =
 document.getElementById("adminPanel");
 
-
-const message =
-document.getElementById("message");
-
-
-const noticeMessage =
-document.getElementById("noticeMessage");
-
-
-
-/* =================================
-   ĐĂNG NHẬP
-================================== */
-
-
-document
-.getElementById("loginButton")
+document.getElementById("loginButton")
 .addEventListener("click", async () => {
 
+    const email =
+    document.getElementById("email").value.trim();
 
-const email =
-document
-.getElementById("email")
-.value
-.trim();
+    const password =
+    document.getElementById("password").value;
 
+    try{
+        await signInWithEmailAndPassword(
+            auth,email,password
+        );
+    }catch(e){
+        document.getElementById("loginMessage")
+        .textContent =
+        "Sai email hoặc mật khẩu.";
+    }
+});
 
-const password =
-document
-.getElementById("password")
-.value;
+document.getElementById("logoutButton")
+.addEventListener("click", () => signOut(auth));
 
+onAuthStateChanged(auth,user=>{
 
-message.textContent = "";
+    if(user){
+        loginPanel.style.display="none";
+        adminPanel.style.display="block";
 
+        document.getElementById("userEmail")
+        .textContent=user.email;
 
-if (!email || !password) {
-
-message.textContent =
-"Vui lòng nhập email và mật khẩu.";
-
-return;
-
-}
-
-
-try {
-
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-
-}
-
-
-catch(error) {
-
-
-console.error(error);
-
-
-message.textContent =
-"Email hoặc mật khẩu không đúng.";
-
-
-}
-
+        loadAll();
+    }else{
+        loginPanel.style.display="block";
+        adminPanel.style.display="none";
+    }
 
 });
 
 
+/* ======================
+   HÀM CHUNG
+====================== */
 
-/* ENTER ĐỂ ĐĂNG NHẬP */
-
-document
-.getElementById("password")
-.addEventListener("keydown", function(event) {
-
-if (event.key === "Enter") {
-
-document
-.getElementById("loginButton")
-.click();
-
+function safe(text){
+    const d=document.createElement("div");
+    d.textContent=text||"";
+    return d.innerHTML;
 }
 
+async function removeItem(collectionName,id){
+    if(!confirm("Bạn có chắc muốn xóa?")) return;
+
+    await deleteDoc(
+        doc(db,collectionName,id)
+    );
+
+    loadAll();
+}
+
+
+/* ======================
+   THÔNG BÁO
+====================== */
+
+document.getElementById("addNotice")
+.addEventListener("click",async()=>{
+
+    const title =
+    noticeTitle.value.trim();
+
+    const date =
+    noticeDate.value;
+
+    const content =
+    noticeContent.value.trim();
+
+    if(!title || !content){
+        noticeMsg.textContent="Vui lòng nhập đủ nội dung.";
+        return;
+    }
+
+    await addDoc(
+        collection(db,"notices"),
+        {
+            title,
+            date,
+            content,
+            createdAt:serverTimestamp()
+        }
+    );
+
+    noticeTitle.value="";
+    noticeDate.value="";
+    noticeContent.value="";
+
+    noticeMsg.textContent="✓ Đã đăng";
+    noticeMsg.className="success";
+
+    loadNotices();
 });
 
 
+async function loadNotices(){
 
-/* =================================
-   ĐĂNG XUẤT
-================================== */
+    const q=query(
+        collection(db,"notices"),
+        orderBy("createdAt","desc")
+    );
+
+    const snap=await getDocs(q);
+
+    noticeList.innerHTML="";
+
+    snap.forEach(x=>{
+
+        const d=x.data();
+
+        noticeList.innerHTML+=`
+        <div class="item">
+            <strong>${safe(d.title)}</strong>
+            <div class="small">${safe(d.date)}</div>
+            <p>${safe(d.content)}</p>
+
+            <button
+            class="delete"
+            onclick="window.removeDB('notices','${x.id}')">
+            🗑️ Xóa
+            </button>
+        </div>
+        `;
+    });
+}
 
 
-document
-.getElementById("logoutButton")
-.addEventListener("click", async () => {
+/* ======================
+   LỊCH TUẦN
+====================== */
 
+document.getElementById("addSchedule")
+.addEventListener("click",async()=>{
 
-await signOut(auth);
+    const day=scheduleDay.value;
+    const content=scheduleContent.value.trim();
 
+    if(!day || !content) return;
 
+    await addDoc(
+        collection(db,"schedule"),
+        {
+            day,
+            content,
+            createdAt:serverTimestamp()
+        }
+    );
+
+    scheduleDay.value="";
+    scheduleContent.value="";
+
+    loadSchedule();
 });
 
 
+async function loadSchedule(){
 
-/* =================================
-   KIỂM TRA TRẠNG THÁI ĐĂNG NHẬP
-================================== */
+    const snap=
+    await getDocs(collection(db,"schedule"));
 
+    scheduleList.innerHTML="";
 
-onAuthStateChanged(auth, (user) => {
+    snap.forEach(x=>{
 
+        const d=x.data();
 
-if (user) {
+        scheduleList.innerHTML+=`
+        <div class="item">
+            <strong>${safe(d.day)}</strong>
+            <p>${safe(d.content)}</p>
 
-
-loginPanel.style.display =
-"none";
-
-
-adminPanel.style.display =
-"block";
-
-
-document
-.getElementById("userEmail")
-.textContent =
-user.email;
-
-
+            <button class="delete"
+            onclick="window.removeDB('schedule','${x.id}')">
+            🗑️ Xóa
+            </button>
+        </div>
+        `;
+    });
 }
 
 
-else {
+/* ======================
+   HÌNH ẢNH
+====================== */
 
+document.getElementById("addImage")
+.addEventListener("click",async()=>{
 
-loginPanel.style.display =
-"block";
+    const title=imageTitle.value.trim();
+    const url=imageUrl.value.trim();
+    const description=imageDescription.value.trim();
 
+    if(!title || !url) return;
 
-adminPanel.style.display =
-"none";
+    await addDoc(
+        collection(db,"gallery"),
+        {
+            title,
+            url,
+            description,
+            createdAt:serverTimestamp()
+        }
+    );
 
+    imageTitle.value="";
+    imageUrl.value="";
+    imageDescription.value="";
 
-document
-.getElementById("password")
-.value =
-"";
-
-
-}
-
-
+    loadImages();
 });
 
 
+async function loadImages(){
 
-/* =================================
-   ĐĂNG THÔNG BÁO
-================================== */
+    const snap=
+    await getDocs(collection(db,"gallery"));
 
+    imageList.innerHTML="";
 
-document
-.getElementById("addNoticeButton")
-.addEventListener("click", async () => {
+    snap.forEach(x=>{
 
+        const d=x.data();
 
-const user =
-auth.currentUser;
+        imageList.innerHTML+=`
+        <div class="item">
 
+            <strong>${safe(d.title)}</strong>
 
-/* CHƯA ĐĂNG NHẬP */
+            <p>${safe(d.description)}</p>
 
-if (!user) {
+            <img
+            src="${safe(d.url)}"
+            class="preview">
 
+            <br><br>
 
-noticeMessage.style.color =
-"#dc2626";
+            <button class="delete"
+            onclick="window.removeDB('gallery','${x.id}')">
+            🗑️ Xóa
+            </button>
 
-
-noticeMessage.textContent =
-"Bạn cần đăng nhập.";
-
-
-return;
-
-
+        </div>
+        `;
+    });
 }
 
 
-
-/* LẤY DỮ LIỆU */
-
-const title =
-document
-.getElementById("noticeTitle")
-.value
-.trim();
-
-
-const date =
-document
-.getElementById("noticeDate")
-.value;
-
-
-const content =
-document
-.getElementById("noticeContent")
-.value
-.trim();
-
-
-
-/* KIỂM TRA */
-
-if (!title || !date || !content) {
-
-
-noticeMessage.style.color =
-"#dc2626";
-
-
-noticeMessage.textContent =
-"Vui lòng nhập đầy đủ tiêu đề, ngày và nội dung.";
-
-
-return;
-
-
-}
-
-
-
-/* GHI FIRESTORE */
-
-try {
-
-
-noticeMessage.style.color =
-"#2563eb";
-
-
-noticeMessage.textContent =
-"Đang đăng thông báo...";
-
-
-await addDoc(
-
-collection(db, "notices"),
-
-{
-
-title: title,
-
-date: date,
-
-content: content,
-
-createdAt:
-serverTimestamp()
-
-}
-
-);
-
-
-
-/* THÀNH CÔNG */
-
-noticeMessage.style.color =
-"#16a34a";
-
-
-noticeMessage.textContent =
-"✓ Đã đăng thông báo thành công!";
-
-
-
-/* XÓA FORM */
-
-document
-.getElementById("noticeTitle")
-.value =
-"";
-
-
-document
-.getElementById("noticeDate")
-.value =
-"";
-
-
-document
-.getElementById("noticeContent")
-.value =
-"";
-
-
-}
-
-
-catch(error) {
-
-
-console.error(error);
-
-
-noticeMessage.style.color =
-"#dc2626";
-
-
-noticeMessage.textContent =
-"Không đăng được thông báo. Vui lòng kiểm tra Firestore Rules.";
-
-
-}
-
-
+/* ======================
+   THÀNH TÍCH
+====================== */
+
+document.getElementById("addAchievement")
+.addEventListener("click",async()=>{
+
+    const title=
+    achievementTitle.value.trim();
+
+    const date=
+    achievementDate.value;
+
+    const content=
+    achievementContent.value.trim();
+
+    if(!title) return;
+
+    await addDoc(
+        collection(db,"achievements"),
+        {
+            title,
+            date,
+            content,
+            createdAt:serverTimestamp()
+        }
+    );
+
+    achievementTitle.value="";
+    achievementDate.value="";
+    achievementContent.value="";
+
+    loadAchievements();
 });
 
+
+async function loadAchievements(){
+
+    const snap=
+    await getDocs(
+        collection(db,"achievements")
+    );
+
+    achievementList.innerHTML="";
+
+    snap.forEach(x=>{
+
+        const d=x.data();
+
+        achievementList.innerHTML+=`
+        <div class="item">
+
+            <strong>${safe(d.title)}</strong>
+
+            <div class="small">
+                ${safe(d.date)}
+            </div>
+
+            <p>${safe(d.content)}</p>
+
+            <button class="delete"
+            onclick="window.removeDB('achievements','${x.id}')">
+            🗑️ Xóa
+            </button>
+
+        </div>
+        `;
+    });
+}
+
+
+/* ======================
+   TÀI LIỆU
+====================== */
+
+document.getElementById("addDocument")
+.addEventListener("click",async()=>{
+
+    const title=
+    documentTitle.value.trim();
+
+    const url=
+    documentUrl.value.trim();
+
+    const description=
+    documentDescription.value.trim();
+
+    if(!title || !url) return;
+
+    await addDoc(
+        collection(db,"documents"),
+        {
+            title,
+            url,
+            description,
+            createdAt:serverTimestamp()
+        }
+    );
+
+    documentTitle.value="";
+    documentUrl.value="";
+    documentDescription.value="";
+
+    loadDocuments();
+});
+
+
+async function loadDocuments(){
+
+    const snap=
+    await getDocs(
+        collection(db,"documents")
+    );
+
+    documentList.innerHTML="";
+
+    snap.forEach(x=>{
+
+        const d=x.data();
+
+        documentList.innerHTML+=`
+        <div class="item">
+
+            <strong>${safe(d.title)}</strong>
+
+            <p>${safe(d.description)}</p>
+
+            <a
+            href="${safe(d.url)}"
+            target="_blank">
+            Mở tài liệu
+            </a>
+
+            <br><br>
+
+            <button class="delete"
+            onclick="window.removeDB('documents','${x.id}')">
+            🗑️ Xóa
+            </button>
+
+        </div>
+        `;
+    });
+}
+
+
+/* ======================
+   XÓA
+====================== */
+
+window.removeDB =
+async function(collectionName,id){
+
+    if(!confirm("Bạn có chắc muốn xóa?"))
+        return;
+
+    await deleteDoc(
+        doc(db,collectionName,id)
+    );
+
+    loadAll();
+};
+
+
+/* ======================
+   LOAD TẤT CẢ
+====================== */
+
+function loadAll(){
+
+    loadNotices();
+    loadSchedule();
+    loadImages();
+    loadAchievements();
+    loadDocuments();
+
+}
 
 </script>
 
-
 </body>
-
 </html>
