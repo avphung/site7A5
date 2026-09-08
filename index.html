@@ -6,63 +6,92 @@
     <title>Lớp 7A5</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #222;
+            background: #f5f7fb;
+            color: #1f2937;
         }
 
         header {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: white;
+            padding: 55px 20px;
             text-align: center;
-            padding: 50px 20px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 42px;
+            font-size: 46px;
         }
 
         header p {
+            margin: 10px 0 0;
             font-size: 18px;
         }
 
         nav {
             background: white;
-            text-align: center;
             padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
             position: sticky;
             top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         nav a {
+            color: #1e40af;
             text-decoration: none;
-            margin: 0 15px;
-            color: #2563eb;
             font-weight: bold;
+            margin: 0 12px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
             padding: 30px 20px;
         }
 
         .card {
             background: white;
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            margin-top: 0;
+            color: #1e40af;
         }
 
         .notice {
+            padding: 18px;
             border-left: 5px solid #2563eb;
-            padding-left: 15px;
-            margin: 15px 0;
+            background: #eff6ff;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .notice h3 {
+            margin-top: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
         }
 
         .gallery {
@@ -73,34 +102,26 @@
 
         .gallery img {
             width: 100%;
-            border-radius: 10px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
         }
 
         footer {
-            background: #1e293b;
+            background: #172554;
             color: white;
             text-align: center;
-            padding: 25px;
-            margin-top: 30px;
+            padding: 25px 15px;
         }
 
-        .button {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-
-        @media (max-width: 600px) {
-            nav a {
-                display: block;
-                margin: 10px 0;
+        @media (max-width: 700px) {
+            header h1 {
+                font-size: 34px;
             }
 
-            header h1 {
-                font-size: 32px;
+            nav a {
+                display: inline-block;
+                margin: 7px;
             }
         }
     </style>
@@ -110,81 +131,116 @@
 
 <header>
     <h1>LỚP 7A5</h1>
-    <p>Đoàn kết - Chăm ngoan - Tiến bộ</p>
+    <p>Đoàn kết - Trách nhiệm - Tiến bộ</p>
     <p>Năm học 2026 - 2027</p>
 </header>
 
 <nav>
     <a href="#thongbao">Thông báo</a>
+    <a href="#lichtuan">Lịch tuần</a>
     <a href="#hoatdong">Hoạt động</a>
     <a href="#hinhanh">Hình ảnh</a>
+    <a href="#thanhtich">Thành tích</a>
     <a href="#tailieu">Tài liệu</a>
-    <a href="#lienhe">Liên hệ</a>
 </nav>
 
 <div class="container">
 
     <section class="card" id="thongbao">
-        <h2>📢 Thông báo mới</h2>
+        <h2 class="section-title">📢 Thông báo mới</h2>
 
         <div class="notice">
-            <h3>Thông báo 1</h3>
-            <p>Ngày mai học sinh đi học đúng giờ và mặc đồng phục đầy đủ.</p>
+            <h3>Thông báo đầu tuần</h3>
+            <p>Học sinh đi học đúng giờ, mặc đồng phục đầy đủ và chuẩn bị sách vở theo thời khóa biểu.</p>
         </div>
 
         <div class="notice">
-            <h3>Thông báo 2</h3>
-            <p>Lớp chuẩn bị nội dung sinh hoạt chủ nhiệm cuối tuần.</p>
+            <h3>Sinh hoạt lớp</h3>
+            <p>Lớp chuẩn bị nội dung sinh hoạt chủ nhiệm vào cuối tuần.</p>
         </div>
+    </section>
 
+    <section class="card" id="lichtuan">
+        <h2 class="section-title">📅 Lịch tuần</h2>
+
+        <div class="grid">
+            <div class="box">
+                <h3>Thứ Hai</h3>
+                <p>Chào cờ đầu tuần.</p>
+            </div>
+
+            <div class="box">
+                <h3>Thứ Tư</h3>
+                <p>Kiểm tra và nhắc nhở nề nếp.</p>
+            </div>
+
+            <div class="box">
+                <h3>Thứ Bảy</h3>
+                <p>Sinh hoạt lớp và đánh giá thi đua.</p>
+            </div>
+        </div>
     </section>
 
     <section class="card" id="hoatdong">
-        <h2>🎯 Hoạt động lớp</h2>
+        <h2 class="section-title">🎯 Hoạt động nổi bật</h2>
 
-        <h3>Sinh hoạt lớp</h3>
-        <p>Cập nhật các hoạt động sinh hoạt, phong trào và ngoại khóa của lớp tại đây.</p>
+        <div class="grid">
+            <div class="box">
+                <h3>Phong trào học tập</h3>
+                <p>Các hoạt động thi đua học tốt của lớp.</p>
+            </div>
 
-        <h3>Thi đua</h3>
-        <p>Thông tin thi đua giữa các tổ và thành tích nổi bật trong tuần.</p>
+            <div class="box">
+                <h3>Văn nghệ - Thể thao</h3>
+                <p>Cập nhật các hoạt động phong trào của lớp.</p>
+            </div>
+
+            <div class="box">
+                <h3>Ngoại khóa</h3>
+                <p>Những hoạt động trải nghiệm và ngoại khóa.</p>
+            </div>
+        </div>
     </section>
 
     <section class="card" id="hinhanh">
-        <h2>📷 Hình ảnh lớp</h2>
+        <h2 class="section-title">📷 Hình ảnh lớp</h2>
 
         <div class="gallery">
-            <img src="images/anh1.jpg" alt="Hoạt động lớp">
-            <img src="images/anh2.jpg" alt="Hoạt động lớp">
-            <img src="images/anh3.jpg" alt="Hoạt động lớp">
+            <img src="https://placehold.co/600x400?text=Anh+lop+1" alt="Ảnh lớp 1">
+            <img src="https://placehold.co/600x400?text=Anh+lop+2" alt="Ảnh lớp 2">
+            <img src="https://placehold.co/600x400?text=Anh+lop+3" alt="Ảnh lớp 3">
+        </div>
+    </section>
+
+    <section class="card" id="thanhtich">
+        <h2 class="section-title">🏆 Thành tích lớp</h2>
+
+        <div class="grid">
+            <div class="box">
+                <h3>Học tập</h3>
+                <p>Cập nhật thành tích học tập nổi bật.</p>
+            </div>
+
+            <div class="box">
+                <h3>Phong trào</h3>
+                <p>Cập nhật thành tích thi đua và phong trào.</p>
+            </div>
         </div>
     </section>
 
     <section class="card" id="tailieu">
-        <h2>📚 Tài liệu</h2>
+        <h2 class="section-title">📚 Tài liệu</h2>
 
-        <p>
-            <a class="button" href="#">Nội quy lớp</a>
-        </p>
-
-        <p>
-            <a class="button" href="#">Kế hoạch học tập</a>
-        </p>
-    </section>
-
-    <section class="card" id="lienhe">
-        <h2>☎️ Liên hệ giáo viên chủ nhiệm</h2>
-
-        <p><strong>Giáo viên chủ nhiệm:</strong> Nguyễn Đình Phụng</p>
-
-        <p>
-            Các thông tin quan trọng của lớp sẽ được cập nhật thường xuyên trên website này.
-        </p>
+        <p>• Nội quy lớp</p>
+        <p>• Kế hoạch tuần</p>
+        <p>• Biểu mẫu dành cho học sinh và phụ huynh</p>
     </section>
 
 </div>
 
 <footer>
-    Website lớp 7A5 - Năm học 2026 - 2027
+    <p>Lớp 7A5 - Năm học 2026 - 2027</p>
+    <p>Giáo viên chủ nhiệm: Nguyễn Đình Phụng</p>
 </footer>
 
 </body>
