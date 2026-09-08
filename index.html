@@ -7,7 +7,6 @@
 <title>Lớp 7A5 - Năm học 2026-2027</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -20,8 +19,7 @@ body {
     color: #1f2937;
 }
 
-/* ===== HEADER ===== */
-
+/* HEADER */
 header {
     background: linear-gradient(135deg, #2563eb, #1e3a8a);
     color: white;
@@ -31,11 +29,11 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 50px;
 }
 
 header h2 {
-    margin: 10px 0;
+    margin: 12px 0;
     font-weight: normal;
 }
 
@@ -43,31 +41,29 @@ header p {
     font-size: 18px;
 }
 
-/* ===== MENU ===== */
-
+/* MENU */
 nav {
     background: white;
-    padding: 16px;
+    padding: 16px 10px;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
 }
 
 nav a {
     color: #1e40af;
     text-decoration: none;
     font-weight: bold;
-    margin: 0 12px;
+    margin: 0 10px;
 }
 
 nav a:hover {
     color: #2563eb;
 }
 
-/* ===== MAIN ===== */
-
+/* NỘI DUNG */
 .container {
     max-width: 1100px;
     margin: auto;
@@ -89,8 +85,7 @@ nav a:hover {
     padding-bottom: 12px;
 }
 
-/* ===== THÔNG BÁO ===== */
-
+/* THÔNG BÁO */
 .notice {
     background: #eff6ff;
     border-left: 5px solid #2563eb;
@@ -100,17 +95,23 @@ nav a:hover {
 }
 
 .notice h3 {
-    margin-top: 0;
+    margin: 0 0 8px 0;
     color: #1e40af;
 }
 
 .date {
     color: #64748b;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
-/* ===== GRID ===== */
+.loading {
+    text-align: center;
+    color: #64748b;
+    padding: 20px;
+}
 
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -124,8 +125,7 @@ nav a:hover {
     border-radius: 12px;
 }
 
-/* ===== GALLERY ===== */
-
+/* HÌNH ẢNH */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -134,13 +134,12 @@ nav a:hover {
 
 .gallery img {
     width: 100%;
-    height: 200px;
+    height: 210px;
     object-fit: cover;
     border-radius: 12px;
 }
 
-/* ===== BUTTON ===== */
-
+/* BUTTON */
 .button {
     display: inline-block;
     padding: 11px 18px;
@@ -155,21 +154,31 @@ nav a:hover {
     background: #1d4ed8;
 }
 
-/* ===== FOOTER ===== */
-
+/* FOOTER */
 footer {
     background: #172554;
     color: white;
     text-align: center;
-    padding: 30px 15px;
+    padding: 32px 15px;
 }
 
 footer p {
     margin: 7px;
 }
 
-/* ===== MOBILE ===== */
+.admin-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 13px;
+}
 
+.admin-link:hover {
+    color: white;
+}
+
+/* ĐIỆN THOẠI */
 @media (max-width: 700px) {
 
     header {
@@ -177,101 +186,58 @@ footer p {
     }
 
     header h1 {
-        font-size: 36px;
+        font-size: 38px;
+    }
+
+    header h2 {
+        font-size: 20px;
     }
 
     nav a {
         display: inline-block;
         margin: 7px;
+        font-size: 14px;
     }
 
     .card {
         padding: 20px;
     }
 }
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <header>
-
     <h1>LỚP 7A5</h1>
-
     <h2>Đoàn kết - Trách nhiệm - Tiến bộ</h2>
-
     <p>Năm học 2026 - 2027</p>
-
 </header>
 
-
-<!-- ================= MENU ================= -->
-
+<!-- MENU -->
 <nav>
-
     <a href="#thongbao">📢 Thông báo</a>
-
     <a href="#lichtuan">📅 Lịch tuần</a>
-
     <a href="#hoatdong">🎯 Hoạt động</a>
-
     <a href="#hinhanh">📷 Hình ảnh</a>
-
     <a href="#thanhtich">🏆 Thành tích</a>
-
     <a href="#tailieu">📚 Tài liệu</a>
-
 </nav>
-
 
 <div class="container">
 
-
-<!-- ================= THÔNG BÁO ================= -->
-
+<!-- THÔNG BÁO -->
 <section class="card" id="thongbao">
 
     <h2 class="section-title">
         📢 Thông báo mới
     </h2>
 
-
     <div id="noticeList">
 
-        <div class="notice">
-
-            <h3>Thông báo đầu tuần</h3>
-
-            <div class="date">
-                08/09/2026
-            </div>
-
-            <p>
-                Học sinh đi học đúng giờ, mặc đồng phục
-                đầy đủ và chuẩn bị sách vở theo thời khóa biểu.
-            </p>
-
-        </div>
-
-
-        <div class="notice">
-
-            <h3>Sinh hoạt lớp cuối tuần</h3>
-
-            <div class="date">
-                12/09/2026
-            </div>
-
-            <p>
-                Lớp chuẩn bị nội dung sinh hoạt,
-                tổng kết thi đua và đánh giá hoạt động trong tuần.
-            </p>
-
+        <div class="loading">
+            Đang tải thông báo...
         </div>
 
     </div>
@@ -279,187 +245,130 @@ footer p {
 </section>
 
 
-
-<!-- ================= LỊCH TUẦN ================= -->
-
+<!-- LỊCH TUẦN -->
 <section class="card" id="lichtuan">
 
     <h2 class="section-title">
         📅 Lịch tuần
     </h2>
 
-
     <div class="grid">
 
-
         <div class="box">
-
-            <h3>Thứ Hai</h3>
-
-            <p>
-                🇻🇳 Chào cờ đầu tuần
-            </p>
-
+            <h3>🇻🇳 Thứ Hai</h3>
+            <p>Chào cờ đầu tuần.</p>
         </div>
 
-
         <div class="box">
-
-            <h3>Thứ Tư</h3>
-
-            <p>
-                📖 Kiểm tra nề nếp và tình hình học tập.
-            </p>
-
+            <h3>📖 Thứ Tư</h3>
+            <p>Kiểm tra nề nếp và tình hình học tập.</p>
         </div>
 
-
         <div class="box">
-
-            <h3>Thứ Bảy</h3>
-
-            <p>
-                👨‍🏫 Sinh hoạt chủ nhiệm.
-            </p>
-
+            <h3>👨‍🏫 Thứ Bảy</h3>
+            <p>Sinh hoạt chủ nhiệm và đánh giá thi đua tuần.</p>
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- ================= HOẠT ĐỘNG ================= -->
-
+<!-- HOẠT ĐỘNG -->
 <section class="card" id="hoatdong">
 
     <h2 class="section-title">
         🎯 Hoạt động nổi bật
     </h2>
 
-
     <div class="grid">
 
-
         <div class="box">
-
             <h3>📚 Học tập</h3>
-
             <p>
                 Các hoạt động thi đua học tốt,
                 đôi bạn cùng tiến và giúp đỡ nhau trong học tập.
             </p>
-
         </div>
 
-
         <div class="box">
-
             <h3>⚽ Văn nghệ - Thể thao</h3>
-
             <p>
-                Các hoạt động văn nghệ,
-                thể dục thể thao và phong trào của lớp.
+                Các hoạt động văn nghệ, thể dục thể thao
+                và phong trào của lớp.
             </p>
-
         </div>
 
-
         <div class="box">
-
             <h3>🌱 Ngoại khóa</h3>
-
             <p>
                 Các hoạt động trải nghiệm,
                 ngoại khóa và giáo dục kỹ năng sống.
             </p>
-
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- ================= HÌNH ẢNH ================= -->
-
+<!-- HÌNH ẢNH -->
 <section class="card" id="hinhanh">
 
     <h2 class="section-title">
         📷 Hình ảnh lớp
     </h2>
 
-
     <div class="gallery">
 
         <img
         src="https://placehold.co/600x400?text=Lop+7A5"
-        alt="Hình ảnh lớp 7A5">
-
+        alt="Lớp 7A5">
 
         <img
         src="https://placehold.co/600x400?text=Hoat+dong+7A5"
-        alt="Hoạt động lớp">
-
+        alt="Hoạt động lớp 7A5">
 
         <img
         src="https://placehold.co/600x400?text=Ky+niem+7A5"
-        alt="Kỷ niệm lớp">
+        alt="Kỷ niệm lớp 7A5">
 
     </div>
 
 </section>
 
 
-
-<!-- ================= THÀNH TÍCH ================= -->
-
+<!-- THÀNH TÍCH -->
 <section class="card" id="thanhtich">
 
     <h2 class="section-title">
         🏆 Thành tích lớp
     </h2>
 
-
     <div class="grid">
 
-
         <div class="box">
-
             <h3>🏅 Thành tích học tập</h3>
-
             <p>
-                Các thành tích nổi bật của học sinh lớp 7A5
-                sẽ được cập nhật tại đây.
+                Các thành tích học tập nổi bật
+                của học sinh lớp 7A5 sẽ được cập nhật tại đây.
             </p>
-
         </div>
 
-
         <div class="box">
-
             <h3>🎖️ Thành tích phong trào</h3>
-
             <p>
                 Các giải thưởng và thành tích
                 phong trào của tập thể lớp.
             </p>
-
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- ================= TÀI LIỆU ================= -->
-
+<!-- TÀI LIỆU -->
 <section class="card" id="tailieu">
 
     <h2 class="section-title">
@@ -484,13 +393,10 @@ footer p {
 
 </section>
 
-
 </div>
 
 
-
-<!-- ================= FOOTER ================= -->
-
+<!-- FOOTER -->
 <footer>
 
     <p>
@@ -505,9 +411,214 @@ footer p {
         Giáo viên chủ nhiệm: Nguyễn Đình Phụng
     </p>
 
+    <!-- LINK ADMIN -->
+    <a href="admin.html" class="admin-link">
+        ⚙️ Quản trị
+    </a>
+
 </footer>
 
 
-</body>
+<!-- FIREBASE -->
+<script type="module">
 
+import {
+    initializeApp
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+/* FIREBASE CONFIG */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyDlGTat3NPbWnvbODzYB9uyQebpxXb_vXM",
+
+    authDomain:
+    "site7a5.firebaseapp.com",
+
+    projectId:
+    "site7a5",
+
+    storageBucket:
+    "site7a5.firebasestorage.app",
+
+    messagingSenderId:
+    "498959350083",
+
+    appId:
+    "1:498959350083:web:af4e7b22bbeecae5c7d7f6"
+
+};
+
+
+/* KHỞI TẠO FIREBASE */
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+
+/* CHỐNG CHÈN HTML */
+
+function escapeHtml(text) {
+
+    const div =
+    document.createElement("div");
+
+    div.textContent =
+    text || "";
+
+    return div.innerHTML;
+}
+
+
+/* ĐỔI NGÀY */
+
+function formatDate(date) {
+
+    if (!date) return "";
+
+    const parts =
+    date.split("-");
+
+    if (parts.length !== 3)
+        return date;
+
+    return (
+        parts[2] +
+        "/" +
+        parts[1] +
+        "/" +
+        parts[0]
+    );
+}
+
+
+/* TẢI THÔNG BÁO */
+
+async function loadNotices() {
+
+    const noticeList =
+    document.getElementById("noticeList");
+
+    try {
+
+        const q =
+        query(
+            collection(db, "notices"),
+            orderBy("createdAt", "desc")
+        );
+
+        const snapshot =
+        await getDocs(q);
+
+        noticeList.innerHTML = "";
+
+
+        /* CHƯA CÓ THÔNG BÁO */
+
+        if (snapshot.empty) {
+
+            noticeList.innerHTML =
+            `
+            <p style="text-align:center;color:#64748b;">
+                Hiện chưa có thông báo mới.
+            </p>
+            `;
+
+            return;
+        }
+
+
+        /* HIỂN THỊ THÔNG BÁO */
+
+        snapshot.forEach((doc) => {
+
+            const data =
+            doc.data();
+
+            const notice =
+            document.createElement("div");
+
+            notice.className =
+            "notice";
+
+
+            const title =
+            escapeHtml(data.title);
+
+            const date =
+            escapeHtml(
+                formatDate(data.date)
+            );
+
+            const content =
+            escapeHtml(data.content)
+            .replace(/\n/g, "<br>");
+
+
+            notice.innerHTML =
+            `
+                <h3>
+                    ${title}
+                </h3>
+
+                <div class="date">
+                    📅 ${date}
+                </div>
+
+                <p>
+                    ${content}
+                </p>
+            `;
+
+
+            noticeList.appendChild(
+                notice
+            );
+
+        });
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        noticeList.innerHTML =
+        `
+        <p style="
+            text-align:center;
+            color:#dc2626;
+        ">
+            Không tải được thông báo.
+        </p>
+        `;
+
+    }
+
+}
+
+
+/* CHẠY */
+
+loadNotices();
+
+</script>
+
+</body>
 </html>
